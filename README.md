@@ -28,4 +28,5 @@ Our mission is to make AI **accessible, useful, and seamlessly integrated** into
 - **Frontend:** React.js 
 - **Styling:** TailwindCSS  
 
-
+## 📜 License
+All rights reserved. This repository is private and not open for redistribution.
