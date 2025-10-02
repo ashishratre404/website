@@ -1,5 +1,6 @@
 "use client";
 
+import { HOME_FEATURES } from "@/lib/constants";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -77,23 +78,7 @@ export default function Home() {
 
       {/* Feature grid */}
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
-        {[
-          {
-            title: "Problem-first approach",
-            desc: "We start with real-world friction, then design AI that removes it.",
-            icon: "🔎",
-          },
-          {
-            title: "Practical automation",
-            desc: "Streamline repetitive work with smart assistants that fit your flow.",
-            icon: "⚙️",
-          },
-          {
-            title: "Seamless integration",
-            desc: "Tools that plug into your stack without heavy setups or lock-in.",
-            icon: "🔗",
-          },
-        ].map((item, idx) => (
+        {HOME_FEATURES?.map((item, idx) => (
           <motion.div
             key={item.title}
             initial={{ opacity: 0, y: 12 }}
