@@ -20,9 +20,19 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-brand-300)]/60 bg-[color:var(--color-brand-50)] px-3 py-1 text-sm font-medium text-[color:var(--color-brand-700)] shadow-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/80 px-4 py-1.5 text-sm font-medium text-indigo-700 shadow-lg backdrop-blur-sm"
           >
-            <span className="h-2 w-2 rounded-full bg-[color:var(--color-success-light)]" />
+            <motion.span
+              animate={{
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="h-2 w-2 rounded-full bg-green-500"
+            />
             Doozl AI — Where problems meet AI solutions
           </motion.div>
 
@@ -53,13 +63,31 @@ export default function Home() {
           >
             <Link
               href="/tools"
-              className="inline-flex items-center justify-center rounded-xl bg-[color:var(--color-primary)] px-5 py-3 text-base font-semibold text-[color:var(--color-primary-foreground)] shadow-[0_12px_24px_-8px_rgba(99,102,241,0.45)] transition hover:brightness-105 active:translate-y-[1px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-brand-300)]/60"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-4 text-base font-semibold text-white shadow-2xl shadow-indigo-500/50 transition-all duration-300 hover:shadow-indigo-600/60"
             >
-              Explore Tools
+              <span className="relative z-10 flex items-center gap-2">
+                Explore Tools
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  →
+                </motion.span>
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600"
+                initial={{ x: "100%" }}
+                whileHover={{ x: 0 }}
+                transition={{ duration: 0.3 }}
+              />
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center justify-center rounded-xl border border-[color:var(--color-gray-300)] bg-white/70 px-5 py-3 text-base font-semibold text-[color:var(--color-foreground)] shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-brand-300)]/40"
+              className="group inline-flex items-center justify-center rounded-xl border-1 border-gray-300 bg-white/80 px-8 py-4 text-base font-semibold text-gray-700 backdrop-blur-sm transition-all hover:border-indigo-300 hover:bg-white"
             >
               Learn More
             </Link>
