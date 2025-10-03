@@ -5,38 +5,16 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
   useEffect(() => {
-    // Initialize from localStorage or system preference
-    const stored =
-      typeof window !== "undefined"
-        ? (localStorage.getItem("theme") as "light" | "dark" | null)
-        : null;
-    let initial: "light" | "dark" = "light";
-    if (stored) {
-      initial = stored;
-    } else if (
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      initial = "dark";
+    // Force light theme on load
+    if (typeof document !== "undefined") {
+      document.documentElement.removeAttribute("data-theme");
     }
-    setTheme(initial);
-    document.documentElement.setAttribute("data-theme", initial);
   }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  };
 
   return (
     <motion.nav
@@ -50,7 +28,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="font-semibold text-lg tracking-tight">
             <Image
-              src={theme === "dark" ? "/DoozlAI.png" : "/DoozlDark.png"}
+              src="/DoozlDark.png"
               alt="Doozle AI"
               width={100}
               height={100}
@@ -74,19 +52,7 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <button
-              type="button"
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className={
-                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors " +
-                (theme === "dark"
-                  ? "bg-gray-800 text-gray-100 hover:bg-gray-700"
-                  : "bg-gray-100 text-gray-800 hover:bg-gray-200")
-              }
-            >
-              {theme === "dark" ? "Light" : "Dark"}
-            </button>
+            {/* Theme toggle removed for light-only theme */}
           </div>
         </div>
       </div>
