@@ -49,25 +49,6 @@
   --color-primary-foreground: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark theme: brand-tinted navy background + high-contrast foreground */
-    --background: #0b1020;
-    --foreground: #ededed;
-  }
-}
-
-/* Explicit theme overrides via attribute (manual toggle) */
-:root[data-theme="light"] {
-  --background: #f9fafb;
-  --foreground: #10182b;
-}
-
-:root[data-theme="dark"] {
-  --background: #0b1020;
-  --foreground: #ededed;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
