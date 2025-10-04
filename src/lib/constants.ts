@@ -2,7 +2,7 @@ export const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/tools", label: "Tools" },
-  { href: "/pricing", label: "Pricing" },
+  // { href: "/pricing", label: "Pricing" },
 ] as const;
 
 export const HOME_FEATURES = [
