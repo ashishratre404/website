@@ -1,6 +1,7 @@
 "use client";
 
 import { PropsWithChildren } from "react";
+import type * as React from "react";
 import { motion } from "framer-motion";
 
 type AnimatedInViewProps = PropsWithChildren<{
@@ -8,7 +9,7 @@ type AnimatedInViewProps = PropsWithChildren<{
   y?: number;
   duration?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }>;
 
 export default function AnimatedInView({
